@@ -5,6 +5,7 @@ html {
   box-sizing: inherit;
 }
 html, body {
+  font-family: 'Poppins';
   height: 100%;
   padding: 0;
   margin: 0;
@@ -21,11 +22,11 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: black;
-  background: linear-gradient(0.75turn, #005FB2, #00B209);
+  color: darkGrey;
+  background: #1D0C1D;
 }
 
-.main {
+.bookGrid {
   padding: 24px;
   height: 100%;
   display: grid;
@@ -64,4 +65,36 @@ html, body {
 
 .header button:active {
   background-color: #301B69;
+}
+
+.card p {
+  white-space: pre-line;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  background-color: darkGrey;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.overlay.active {
+  display: block;
 }
