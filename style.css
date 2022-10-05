@@ -42,6 +42,7 @@ html, body {
   padding: 1em;
   display: grid;
   box-shadow: 2px 2px 7px black;
+  align-content: start;
 }
 
 .card * {
@@ -97,4 +98,82 @@ html, body {
 
 .overlay.active {
   display: block;
+}
+
+.modal {
+  width: min(600px, 100vw - 3em);
+  border-radius: 8px;
+  background-color: #C6CBD3;
+  padding: 1em;
+}
+
+.modal-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: grey;
+  filter: brightness(100);
+}
+
+.modal h1 {
+  padding: 0 0 10px;
+  margin: 0;
+}
+
+fieldset li {
+  list-style: none;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+form label {
+  padding: 0;
+  margin: 0;
+}
+
+.form-grid input {
+  height: 30px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: 8px;
+  font-size: 1.05rem;
+}
+
+.form-btn {
+  grid-column: span 2;
+  height: 36px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: auto 1em;
+  font-size: 1.1em;
+  color: white;
+}
+
+.submit-btn {
+  background-color: #350E27;
+}
+
+.unread {
+  background-color: #470C0C;
+}
+
+.read {
+  background-color: #0F470C;
 }

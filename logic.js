@@ -4,7 +4,7 @@ const bookFactory = (
   title = "Unknown",
   author = "Unknown",
   pages = 0,
-  read = "Unread"
+  read = ''
 ) => {
   return { title, author, pages, read };
 }
@@ -14,6 +14,8 @@ const addBookBtn = document.getElementById('addBookBtn');
 const addBookForm = document.getElementById('addBookForm');
 const addBookModal = document.getElementById('addBookModal');
 const submitBookBtn = document.getElementById('submitBookBtn');
+const readStatusBtn = document.getElementById('read-status');
+const closeOverlayBtn = document.getElementById('close-btn');
 
 const openAddBookModal = () => {
   addBookForm.reset();
@@ -30,8 +32,8 @@ const getBookFromInput = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
-  const stat = document.querySelector('input[name="status"]:checked').value;
-  return bookFactory(title, author, pages, stat);
+  const read = readStatusBtn.classList.contains('read');
+  return bookFactory(title, author, pages, read);
 }
 
 const addBookToLibrary = (e) => {
@@ -50,7 +52,12 @@ const addBookCard = (book) => {
   card.classList.add('card');
   h2.classList.add('title');
   h2.textContent = book.title;
-  p.textContent = `Author: ${book.author}\r\nPages: ${book.pages}\r\n`;
+  if (book.author) {
+    p.textContent += `Author: ${book.author}\r\n`;
+  }
+  if (book.pages) {
+    p.textContent += `Pages: ${book.pages}\r\n`;
+  }
   if (book.read) {
     p.textContent += `Status: Already read`;
   } else {
@@ -67,7 +74,22 @@ const displayBooks = () => {
   }
 }
 
+const changeStatus = () => {
+  if (readStatusBtn.classList.contains('read')) {
+    readStatusBtn.textContent = 'Unread';
+    readStatusBtn.classList.remove('read');
+    readStatusBtn.classList.add('unread');
+  } else {
+    readStatusBtn.textContent = 'Already read';
+    readStatusBtn.classList.remove('unread');
+    readStatusBtn.classList.add('read');
+  }
+}
+
+readStatusBtn.onclick = changeStatus;
 addBookBtn.onclick = openAddBookModal;
 addBookForm.onsubmit = addBookToLibrary;
+overlay.onclick = closeAddBookModal;
+closeOverlayBtn.onclick = closeAddBookModal;
 
 displayBooks();

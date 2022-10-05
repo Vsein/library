@@ -36,38 +36,27 @@
       <div class="overlay" id="overlay"></div>
 
       <div class="modal" id="addBookModal">
+        <div class="modal-top">
+          <h1>Add a new book</h1>
+          <img src="cross.svg" class="close-btn" id="close-btn">
+        </div>
         <form id="addBookForm">
-          <label for="title">Title:</label>
-          <input type="text" name="title" id="title" required>
-          <label for="author">Author:</label>
-          <input type="text" name="author" id="author" required>
-          <label for="pages">Pages:</label>
-          <input type="number" name="pages" id="pages" required>
-          <fieldset>
-            <legend>Status</legend>
-            <ul>
-              <li>
-                <input type="radio" id="watched" name="status" value="watched">
-                <label for="read">Watched</label>
-              </li>
-              <li>
-                <input type="radio" id="dropped" name="status" value="dropped">
-                <label for="read">Dropped</label>
-              </li>
-              <li>
-                <input type="radio" id="reading" name="status" value="reading">
-                <label for="read">Currently reading</label>
-              </li>
-              <li>
-                <input type="radio" id="planning" name="status" value="planning" checked>
-                <label for="read">Planning</label>
-              </li>
-            </ul>
-          </fieldset>
-          <button type="submit" id="submitBookBtn">Submit</button>
+          <div class="form-grid">
+            <label for="title">Title*:</label>
+            <input type="text" name="title" id="title" required>
+
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author">
+
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages" id="pages">
+
+            <button type="button" id="read-status" class="unread form-btn">Unread</button>
+
+            <button type="submit" id="submitBookBtn" class="submit-btn form-btn">Submit</button>
+          </div>
         </form>
       </div>
 
     </div>
-  </body>
-</html>
+  </body> </html>
