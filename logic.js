@@ -1,15 +1,12 @@
 let myLibrary = [];
 
-function Book(
+const bookFactory = (
   title = "Unknown",
   author = "Unknown",
   pages = 0,
   read = "Unread"
-) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+) => {
+  return { title, author, pages, read };
 }
 
 const overlay = document.getElementById('overlay');
@@ -19,7 +16,6 @@ const addBookModal = document.getElementById('addBookModal');
 const submitBookBtn = document.getElementById('submitBookBtn');
 
 const openAddBookModal = () => {
-  console.log(1);
   addBookForm.reset();
   overlay.classList.add('active');
   addBookModal.classList.add('active');
@@ -35,14 +31,12 @@ const getBookFromInput = () => {
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const stat = document.querySelector('input[name="status"]:checked').value;
-  console.log(1);
-  return new Book(title, author, pages, stat);
+  return bookFactory(title, author, pages, stat);
 }
 
 const addBookToLibrary = (e) => {
   e.preventDefault();
   let book = getBookFromInput();
-  console.log(1);
   myLibrary.push(book);
   addBookCard(book);
   closeAddBookModal();
